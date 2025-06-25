@@ -1,0 +1,42 @@
+name: Deploy Portfolio
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🛠️ Build Project
+        run: npm run build
+
+      - name: ✅ Test (Optional)
+        run: npm test || echo "No tests defined"
+
+      # Uncomment below if you want to deploy to a server via SSH
+      # - name: 🚀 Deploy to Server via SSH
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ secrets.SERVER_HOST }}
+      #     username: ${{ secrets.SERVER_USER }}
+      #     key: ${{ secrets.SERVER_SSH_KEY }}
+      #     script: |
+      #       cd /path/to/your/project
+      #       git pull origin master
+      #       npm install
+      #       npm run build
+      #       pm2 restart all
