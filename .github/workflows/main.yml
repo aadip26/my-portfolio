@@ -21,13 +21,10 @@ jobs:
       - name: 📦 Install Dependencies
         run: npm install
 
-      - name: 🛠️ Build Project
-        run: npm run build
-
       - name: ✅ Test (Optional)
         run: npm test || echo "No tests defined"
 
-      # Uncomment below if you want to deploy to a server via SSH
+      # Uncomment and configure if deploying to EC2
       # - name: 🚀 Deploy to Server via SSH
       #   uses: appleboy/ssh-action@v1.0.3
       #   with:
@@ -38,5 +35,4 @@ jobs:
       #       cd /path/to/your/project
       #       git pull origin master
       #       npm install
-      #       npm run build
       #       pm2 restart all
