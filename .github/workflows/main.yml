@@ -23,7 +23,7 @@ jobs:
 
       - name: ✅ Test (Optional)
         run: npm test || echo "No tests defined"
-
+       #deploy project
       # Uncomment and configure if deploying to EC2
       # - name: 🚀 Deploy to Server via SSH
       #   uses: appleboy/ssh-action@v1.0.3
